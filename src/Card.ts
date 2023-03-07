@@ -93,12 +93,15 @@ export function generateRandomBg() {
     }
 
     render() {
+      // 先清除，再添加
+      while (this.shadow.lastElementChild) {
+        this.shadow.removeChild(this.shadow.lastElementChild);
+      }
+
       // 克隆一份 template 防止重复使用 污染
       const content = template.content.cloneNode(true) as HTMLElement 
       // 获取背景盒子
       const container = content.querySelector('#whatIsMyRandomBG') as HTMLElement
-      // 先清除子元素，再添加
-
       // 生成随机多边形 item
       const randomBgItems = randomGeneratePolygon()
       // 遍历将其添加到 shadow-dom
@@ -109,7 +112,7 @@ export function generateRandomBg() {
       }
       // 添加
       this.shadow.appendChild(content)
-      this.dispatchEvent(new CustomEvent("rendered", { detail: 11111 }));
+      this.dispatchEvent(new CustomEvent("rendered", { detail: randomBgItems }));
     }
 
    
