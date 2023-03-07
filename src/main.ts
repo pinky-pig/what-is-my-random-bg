@@ -2,6 +2,6 @@ import './Card'
 
 document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
   <div>
-    <random-bg />
+    <random-bg dblable="true" />
   </div>
 `

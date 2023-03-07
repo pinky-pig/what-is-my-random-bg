@@ -84,6 +84,12 @@ export function generateRandomBg() {
         mode: 'closed'
       })
       this.render()
+
+      this.shadow.addEventListener('dblclick', () => {
+        if (this.dblable === 'true') {
+          this.render()
+        }
+      });
     }
 
     render() {
@@ -91,6 +97,8 @@ export function generateRandomBg() {
       const content = template.content.cloneNode(true) as HTMLElement 
       // 获取背景盒子
       const container = content.querySelector('#whatIsMyRandomBG') as HTMLElement
+      // 先清除子元素，再添加
+
       // 生成随机多边形 item
       const randomBgItems = randomGeneratePolygon()
       // 遍历将其添加到 shadow-dom
@@ -101,6 +109,15 @@ export function generateRandomBg() {
       }
       // 添加
       this.shadow.appendChild(content)
+      this.dispatchEvent(new CustomEvent("rendered", { detail: 11111 }));
+    }
+
+   
+    get dblable() {
+      return this.getAttribute("dblable");
+    }
+    set dblable(value) {
+      this.setAttribute("dblable", value as any);
     }
   }
 
