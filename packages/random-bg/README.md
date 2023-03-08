@@ -1,7 +1,7 @@
 
 
 <div align="center">
-	<h1 style="margin:10px">v3-dragblock</h1>
+	<h1 style="margin:10px">random-bg</h1>
 	<h6 align="center">Component based in Vue3</h6>
 </div>
 
