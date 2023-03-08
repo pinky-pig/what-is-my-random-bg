@@ -11,6 +11,8 @@ const initialData = JSON.stringify(
 let isRerenderFlag = 0
 document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
   <div>
+
+    <h1>Vite + Vanilla</h1>
     <button id="Redraw">
       Redraw
     </button>

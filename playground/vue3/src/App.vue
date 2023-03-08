@@ -18,6 +18,8 @@ const printf = (e: any) => {
 </script>
 
 <template>
+  <h1>Vite + Vue3</h1>
+
   <button @click="isRerenderFlag++">
     Redraw
   </button>
