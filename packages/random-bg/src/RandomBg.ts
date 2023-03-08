@@ -17,6 +17,7 @@ template.innerHTML = `
       width: 100%;
       height: 100%;
       filter: blur(180px);
+      pointer-events: none;
     }
   </style>
   <div id="whatIsMyRandomBG">
@@ -91,30 +92,34 @@ export function generateRandomBg() {
         mode: 'closed',
       })
       this.render()
-
-      this.shadow.addEventListener('dblclick', () => {
-        if (this.dblable)
-          this.render()
-      })
     }
 
     static get observedAttributes() {
-      return ['dblable']
+      return ['rerender', 'initial-data']
     }
 
-    get dblable() {
-      return this.hasAttribute('dblable')
+    get rerender() {
+      return this.getAttribute('rerender')
     }
 
-    set dblable(value) {
-      if (value)
-        this.setAttribute('dblable', '')
-
-      else
-        this.removeAttribute('dblable')
+    set rerender(value) {
+      this.setAttribute('rerender', `${value}`)
     }
 
-    render() {
+    get 'initial-data'() {
+      // return this.hasAttribute('dblable') // boolean
+      return this.getAttribute('initial-data')
+    }
+
+    set 'initial-data'(value) {
+      // if (value)
+      //   this.setAttribute('dblable', '')
+      // else
+      //   this.removeAttribute('dblable')
+      this.setAttribute('initial-data', `${value}`)
+    }
+
+    render(defaultData?: any) {
       // 先清除，再添加
       while (this.shadow.lastElementChild)
         this.shadow.removeChild(this.shadow.lastElementChild)
@@ -124,7 +129,7 @@ export function generateRandomBg() {
       // 获取背景盒子
       const container = content.querySelector('#whatIsMyRandomBG') as HTMLElement
       // 生成随机多边形 item
-      const randomBgItems = randomGeneratePolygon()
+      const randomBgItems = defaultData || randomGeneratePolygon()
       // 遍历将其添加到 shadow-dom
       for (let i = 0; i < randomBgItems.length; i++) {
         const item = document.createElement('div')
@@ -155,11 +160,27 @@ export function generateRandomBg() {
     // 4.当 custom element 增加、删除、修改自身属性时，被调用。
     // 如果需要触发，需要先在 observedAttributes 中定义
     attributeChangedCallback(name: string, _oldValue: any, _newValue: any) {
-      if (name === 'dblable' && this.dblable) {
-        // console.log('true', oldValue, newValue)
+      // 重新渲染
+
+      // 第一次进来不重新渲染
+      if (name === 'rerender' && _oldValue !== null)
+        this.render()
+
+      // 默认渲染
+      if (name === 'initial-data' && _newValue !== '') {
+        // 1. 默认渲染
+        let defaultData = null
+        try {
+          defaultData = JSON.parse(_newValue)
+          this.render(defaultData)
+        }
+        catch (error) {
+          console.error('当前传入的初始数据有问题')
+        }
       }
-      else {
-        // console.log('false', oldValue, newValue)
+      else if (name === 'initial-data' && _newValue === '') {
+        // 2.随机渲染
+        this.render()
       }
     }
   }
