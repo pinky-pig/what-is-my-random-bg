@@ -1,30 +1,30 @@
 {
-  "name": "v3-dragblock",
+  "name": "random-bg",
   "type": "module",
-  "version": "1.0.9",
+  "version": "0.0.1",
   "private": false,
   "author": "pinky-pig",
   "license": "MIT",
-  "homepage": "https://what-is-v3-dragblock.vercel.app/",
+  "homepage": "https://github.com/pinky-pig/what-is-my-random-bg",
   "repository": {
     "type": "git",
-    "url": "https://github.com/pinky-pig/v3-dragblock"
+    "url": "https://github.com/pinky-pig/what-is-my-random-bg"
   },
   "keywords": [
-    "vue3-dragblock",
-    "vue3-drag-resize-component",
-    "drag",
-    "resize",
-    "adsrob"
+    "random-bg",
+    "vue",
+    "web components",
+    "react",
+    "background"
   ],
   "exports": {
     ".": {
-      "require": "./dist/v3-dragblock.umd.js",
-      "import": "./dist/v3-dragblock.es.js"
+      "require": "./dist/random-bg.umd.js",
+      "import": "./dist/random-bg.es.js"
     }
   },
-  "main": "./dist/v3-dragblock.umd.js",
-  "module": "./dist/v3-dragblock.es.js",
+  "main": "./dist/random-bg.umd.js",
+  "module": "./dist/random-bg.es.js",
   "types": "./dist/index.d.ts",
   "publishConfig": {
     "registry": "https://registry.npmjs.org",
