@@ -1,3 +1,8 @@
+//-----------------------------------------------------------------------------------------//
+//---  https://developer.mozilla.org/zh-CN/docs/Web/Web_Components/Using_custom_elements --//
+//---  https://github.com/mdn/web-components-examples/tree/main/life-cycle-callbacks     --//
+//---  https://mdn.github.io/web-components-examples/life-cycle-callbacks/               --//
+//-----------------------------------------------------------------------------------------//
 
 // 定义DOM
 const template = document.createElement('template')
@@ -36,6 +41,10 @@ function getRandomIntInclusive(min: number, max: number) {
   max = Math.floor(max)
   return Math.floor(Math.random() * (max - min + 1)) + min // 含最大值，含最小值
 }
+// function random(min:number, max:number) {
+//   return Math.floor(Math.random() * (max - min + 1) + min);
+// }
+// let color = `rgb(${random(0, 255)}, ${random(0, 255)}, ${random(0, 255)})`
 
 // 生成多边形
 function randomGeneratePolygon() {
@@ -86,16 +95,31 @@ export function generateRandomBg() {
       this.render()
 
       this.shadow.addEventListener('dblclick', () => {
-        if (this.dblable === 'true') {
+        if (this.dblable) {
           this.render()
         }
-      });
+      })
+    }
+
+    static get observedAttributes() {
+      return ['dblable']
+    }
+
+    get dblable() {
+      return this.hasAttribute('dblable')
+    }
+    set dblable(value) {
+      if (value) {
+        this.setAttribute('dblable', '')
+      } else {
+          this.removeAttribute('dblable')
+      }
     }
 
     render() {
       // 先清除，再添加
       while (this.shadow.lastElementChild) {
-        this.shadow.removeChild(this.shadow.lastElementChild);
+        this.shadow.removeChild(this.shadow.lastElementChild)
       }
 
       // 克隆一份 template 防止重复使用 污染
@@ -107,25 +131,40 @@ export function generateRandomBg() {
       // 遍历将其添加到 shadow-dom
       for (let i = 0; i < randomBgItems.length; i++) {
         const item = document.createElement('div')
-        item.setAttribute("style",`width: 100%; height: 100%; position: absolute; clip-path: ${randomBgItems[i].path}; background: ${randomBgItems[i].color}`);//可行
+        item.setAttribute("style",`width: 100%; height: 100%; position: absolute; clip-path: ${randomBgItems[i].path}; background: ${randomBgItems[i].color}`) //可行
         container.appendChild(item)
       }
       // 添加
       this.shadow.appendChild(content)
-      this.dispatchEvent(new CustomEvent("rendered", { detail: randomBgItems }));
+      this.dispatchEvent(new CustomEvent("rendered", { detail: randomBgItems }))
     }
 
-   
-    get dblable() {
-      return this.getAttribute("dblable");
+    //---------- 生命周期函数 ----------//
+    // 1.当 custom element 首次被插入文档 DOM 时，被调用。
+    connectedCallback() {
+      console.log('custom element 首次被插入文档 DOM')
     }
-    set dblable(value) {
-      this.setAttribute("dblable", value as any);
+    // 2.当 custom element 从文档 DOM 中删除时，被调用。
+    disconnectedCallback() {
+      console.log('custom element 从文档 DOM 中删除')
+    }
+    // 3.当 custom element 被移动到新的文档时，被调用。
+    adoptedCallback() {
+      console.log('custom element 被移动到新的文档')
+    }
+
+    // 4.当 custom element 增加、删除、修改自身属性时，被调用。
+    attributeChangedCallback(name: string, oldValue:any, newValue:any) {
+      if (name === 'dblable' && this.dblable) {
+        console.log('true',oldValue,newValue)
+      }else{
+        console.log('false',oldValue,newValue)
+      }
     }
   }
 
   // 防止重复注册
-  window.customElements.get('random-bg') || window.customElements.define('random-bg', RandomBg);
+  window.customElements.get('random-bg') || window.customElements.define('random-bg', RandomBg)
 }
 
 generateRandomBg()
