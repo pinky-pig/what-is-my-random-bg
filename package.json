@@ -9,6 +9,7 @@
   "scripts": {
     "lint": "eslint .",
     "dev:vanilla": "vite playground/vanilla",
+    "dev:react": "vite playground/react",
     "dev:vue2": "vite playground/vue2",
     "dev:vue3": "vite playground/vue3",
     "build:docs": "vitepress build packages/docs",
