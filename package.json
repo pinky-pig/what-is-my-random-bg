@@ -8,8 +8,9 @@
   "main": "index.js",
   "scripts": {
     "lint": "eslint .",
-    "dev:vue2": "vite playground/vue2",
     "dev:vanilla": "vite playground/vanilla",
+    "dev:vue2": "vite playground/vue2",
+    "dev:vue3": "vite playground/vue3",
     "build": "vite build packages/v3-dragblock",
     "docs:build": "vitepress build packages/docs",
     "test": "echo \"Error: no test specified\" && exit 1"
