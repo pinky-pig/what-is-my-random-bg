@@ -1,4 +1,4 @@
-import './RandomBg'
+import '../../../packages/random-bg/src'
 
 document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
   <div>
