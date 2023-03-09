@@ -47,7 +47,7 @@ function getRandomIntInclusive(min: number, max: number) {
 // let color = `rgb(${random(0, 255)}, ${random(0, 255)}, ${random(0, 255)})`
 
 // 生成多边形
-function randomGeneratePolygon() {
+function randomGeneratePolygon(themes: any) {
   // 渲染几个多边形（这里只有3个）
   const polygonList = new Array(getRandomIntInclusive(3, 3)).fill([])
 
@@ -116,7 +116,25 @@ export function generateRandomBg() {
       //   this.setAttribute('dblable', '')
       // else
       //   this.removeAttribute('dblable')
-      this.setAttribute('initial-data', `${value}`)
+      this.setAttribute('initial-data', JSON.stringify(value))
+    }
+
+    get palettes() {
+      const propsPalettes = this.getAttribute('palettes')
+      // 如果有
+      if (propsPalettes) {
+        try {
+          return JSON.parse(propsPalettes)
+        } catch (error) {
+          console.log('当前传入的色板值有问题',error);
+        }
+      }else{
+        return themes
+      }
+    }
+
+    set palettes(value) {
+      this.setAttribute('palettes', JSON.stringify(value))
     }
 
     render(defaultData?: any) {
@@ -129,7 +147,7 @@ export function generateRandomBg() {
       // 获取背景盒子
       const container = content.querySelector('#whatIsMyRandomBG') as HTMLElement
       // 生成随机多边形 item
-      const randomBgItems = defaultData || randomGeneratePolygon()
+      const randomBgItems = defaultData || randomGeneratePolygon(this.palettes)
       // 遍历将其添加到 shadow-dom
       for (let i = 0; i < randomBgItems.length; i++) {
         const item = document.createElement('div')

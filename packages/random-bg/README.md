@@ -2,7 +2,7 @@
 
 <div align="center">
 	<h1 style="margin:10px">random-bg</h1>
-	<h6 align="center">Component based in Vue3</h6>
+	<h6 align="center">Web Components</h6>
 </div>
 
 Github Pages 演示地址： [https://pinky-pig.github.io/what-is-my-random-bg/](https://pinky-pig.github.io/what-is-my-random-bg/)  
