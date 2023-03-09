@@ -28,6 +28,24 @@ RandomBg 随机多边形加上 `blur()` 创造的背景色。
 - 可配置随机色范围
 - 生成后的函数方法回调
 
+## ⚡ Configurations
+
+这里展示一些组件的配置，包括设置 拖拽、缩放、吸附功能是否开启，以及一些事件方法。
+
+```vue
+<template>
+  <random-bg
+    :palettes="palettes"
+    :initial-data="initialData"
+    :rerender="`${isRerenderFlag}`"
+    @rendered="printf"
+  />
+</template>
+```
+- palettes 随机颜色的范围，传入后，随机块颜色将在这里抽取。不传入的话，按照默认的色域随机
+- initial-data 初始化的背景色，如果不传入，那么就是随机生成
+- rerender 监听值，值变化就重新渲染
+- @rendered 重新渲染后生成的数组，可传入给 `initial-data`
 
 ## 👊 Todo
 
@@ -181,24 +199,3 @@ function App() {
 export default App
 
 ```
-
-
-## ⚡ Configurations
-
-这里展示一些组件的配置，包括设置 拖拽、缩放、吸附功能是否开启，以及一些事件方法。
-
-```vue
-<template>
-  <random-bg
-    :palettes="palettes"
-    :initial-data="initialData"
-    :rerender="`${isRerenderFlag}`"
-    @rendered="printf"
-  />
-</template>
-```
-
-- palettes 随机颜色的范围，传入后，随机块颜色将在这里抽取。不传入的话，按照默认的色域随机
-- initial-data 初始化的背景色，如果不传入，那么就是随机生成
-- rerender 监听值，值变化就重新渲染
-- @rendered 重新渲染后生成的数组，可传入给 `initial-data`
