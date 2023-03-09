@@ -7,6 +7,11 @@ const router = createRouter({
   routes: [
     {
       path: '/',
+      name: '/',
+      component: () => import('../components/Four.vue')
+    },
+    {
+      path: '/One',
       name: 'One',
       component: One
     },
@@ -19,6 +24,11 @@ const router = createRouter({
       path: '/Three',
       name: 'Three',
       component: () => import('../components/Three.vue')
+    },
+    {
+      path: '/Four',
+      name: 'Four',
+      component: () => import('../components/Four.vue')
     }
   ]
 })
