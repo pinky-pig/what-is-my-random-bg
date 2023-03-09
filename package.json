@@ -1,5 +1,5 @@
 {
-  "name": "what-is-my-components",
+  "name": "what-is-my-random-bg",
   "version": "1.0.0",
   "description": "",
   "author": "",
@@ -12,7 +12,8 @@
     "dev:react": "vite playground/react",
     "dev:vue2": "vite playground/vue2",
     "dev:vue3": "vite playground/vue3",
-    "build": "vite build packages/v-custom-random-bg",
+    "build": "vite build packages/random-bg",
+    "build:v-custom-random-bg": "vite build packages/v-custom-random-bg",
     "build:vanilla": "vite build playground/vanilla",
     "build:react": "vite build playground/react",
     "build:vue2": "vite build playground/vue2",
