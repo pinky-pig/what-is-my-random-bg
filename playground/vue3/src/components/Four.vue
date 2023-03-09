@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import '../../../../packages/random-bg/src'
-// import 'packages'
+// import '../../../../packages/random-bg/src'
+import 'random-bg'
 
 // 随机色色板
 const palettes = [
