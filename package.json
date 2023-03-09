@@ -12,6 +12,7 @@
     "dev:react": "vite playground/react",
     "dev:vue2": "vite playground/vue2",
     "dev:vue3": "vite playground/vue3",
+    "build": "vite build packages/v-custom-random-bg",
     "build:vanilla": "vite build playground/vanilla",
     "build:react": "vite build playground/react",
     "build:vue2": "vite build playground/vue2",
@@ -22,6 +23,7 @@
   "devDependencies": {
     "@antfu/eslint-config": "^0.35.2",
     "@types/node": "^18.11.18",
+    "@typescript-eslint/eslint-plugin": "^5.48.0",
     "@vitejs/plugin-vue": "^4.0.0",
     "eslint": "^8.31.0",
     "typescript": "^4.9.3",
