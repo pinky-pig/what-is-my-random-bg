@@ -5,6 +5,8 @@
 	<h6 align="center">Component based in Vue3</h6>
 </div>
 
+Github Pages 演示地址： [https://pinky-pig.github.io/what-is-my-random-bg/](https://pinky-pig.github.io/what-is-my-random-bg/)  
+Github 代码地址： [https://github.com/pinky-pig/what-is-my-random-bg](https://github.com/pinky-pig/what-is-my-random-bg)
 
 # 🌸 Get Started 
 
