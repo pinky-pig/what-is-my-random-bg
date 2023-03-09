@@ -19,7 +19,7 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
 
     <random-bg 
       rerender='${isRerenderFlag}'
-      initial-data='${initialData}'
+      initial='${initialData}'
      />
   </div>
 `

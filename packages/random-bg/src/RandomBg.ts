@@ -95,7 +95,7 @@ export function generateRandomBg() {
     }
 
     static get observedAttributes() {
-      return ['rerender', 'initial-data']
+      return ['rerender', 'initial']
     }
 
     get rerender() {
@@ -106,17 +106,17 @@ export function generateRandomBg() {
       this.setAttribute('rerender', `${value}`)
     }
 
-    get 'initial-data'() {
+    get initial() {
       // return this.hasAttribute('dblable') // boolean
-      return this.getAttribute('initial-data')
+      return this.getAttribute('initial')
     }
 
-    set 'initial-data'(value) {
+    set initial(value) {
       // if (value)
       //   this.setAttribute('dblable', '')
       // else
       //   this.removeAttribute('dblable')
-      this.setAttribute('initial-data', JSON.stringify(value))
+      this.setAttribute('initial', JSON.stringify(value))
     }
 
     get palettes() {
@@ -185,7 +185,7 @@ export function generateRandomBg() {
         this.render()
 
       // 默认渲染
-      if (name === 'initial-data' && _newValue !== '') {
+      if (name === 'initial' && _newValue !== '') {
         // 1. 默认渲染
         let defaultData = null
         try {
@@ -196,7 +196,7 @@ export function generateRandomBg() {
           console.error('当前传入的初始数据有问题')
         }
       }
-      else if (name === 'initial-data' && _newValue === '') {
+      else if (name === 'initial' && _newValue === '') {
         // 2.随机渲染
         this.render()
       }

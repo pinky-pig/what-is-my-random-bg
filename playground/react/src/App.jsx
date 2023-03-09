@@ -18,7 +18,7 @@ function App() {
       <div>
 
       <random-bg
-        initial-data={initialData}
+        initial={initialData}
         rerender={count}
       />
       </div>

@@ -19,7 +19,7 @@ const props = defineProps({
   rerender: {
     default: '',
   },
-  'initial-data': {
+  initial: {
     default: [
       { path: 'polygon(28% 42%,16% 71%,21% 25%,31% 26%,9% 13%,9% 40%,23% 91%,6% 90%,4% 6%,12% 67%)', color: '#dab6c4' },
       { path: 'polygon(65% 17%,50% 35%,47% 79%,62% 63%,53% 91%,35% 41%)', color: '#7b886f' },
@@ -31,7 +31,7 @@ const props = defineProps({
 
 const polygonPathList = ref()
 
-render(props['initial-data'])
+render(props.initial)
 
 watch(() => props.rerender, (_oldValue: any, _newValue: any) => {
   // 第一次进来不重新渲染

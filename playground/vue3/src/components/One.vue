@@ -38,7 +38,7 @@ const printf = (e: any) => {
 
   <random-bg
     :palettes="palettes"
-    :initial-data="initialData"
+    :initial="initialData"
     :rerender="`${isRerenderFlag}`"
     @rendered="printf"
   />

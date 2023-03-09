@@ -24,7 +24,7 @@ RandomBg 随机多边形加上 `blur()` 创造的背景色。
 ## 🏄‍♂️ Feature
 
 - 可随机生成背景
-- 可传入配置 初始渲染背景 initial-data 
+- 可传入配置 初始渲染背景 initial 
 - 可配置随机色范围
 - 生成后的函数方法回调
 
@@ -36,16 +36,16 @@ RandomBg 随机多边形加上 `blur()` 创造的背景色。
 <template>
   <random-bg
     :palettes="palettes"
-    :initial-data="initialData"
+    :initial="initialData"
     :rerender="`${isRerenderFlag}`"
     @rendered="printf"
   />
 </template>
 ```
 - palettes 随机颜色的范围，传入后，随机块颜色将在这里抽取。不传入的话，按照默认的色域随机
-- initial-data 初始化的背景色，如果不传入，那么就是随机生成
+- initial 初始化的背景色，如果不传入，那么就是随机生成
 - rerender 监听值，值变化就重新渲染
-- @rendered 重新渲染后生成的数组，可传入给 `initial-data`
+- @rendered 重新渲染后生成的数组，可传入给 `initial`
 
 ## 👊 Todo
 
@@ -116,7 +116,7 @@ const printf = (e: any) => {
 
   <random-bg
     :palettes="palettes"
-    :initial-data="initialData"
+    :initial="initialData"
     :rerender="`${isRerenderFlag}`"
     @rendered="printf"
   />
@@ -146,7 +146,7 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
 
     <random-bg 
       rerender='${isRerenderFlag}'
-      initial-data='${initialData}'
+      initial='${initialData}'
      />
   </div>
 `
@@ -180,7 +180,7 @@ function App() {
       <div>
 
       <random-bg
-        initial-data={initialData}
+        initial={initialData}
         rerender={count}
       />
       </div>
