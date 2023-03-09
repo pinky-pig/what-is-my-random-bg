@@ -12,6 +12,10 @@
     "dev:react": "vite playground/react",
     "dev:vue2": "vite playground/vue2",
     "dev:vue3": "vite playground/vue3",
+    "build:vanilla": "vite build playground/vanilla",
+    "build:react": "vite build playground/react",
+    "build:vue2": "vite build playground/vue2",
+    "build:vue3": "vite build playground/vue3",
     "build:docs": "vitepress build packages/docs",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
